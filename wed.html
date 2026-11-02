@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    
+<!-- style -->
+ <style>
+    .birthday-section {
+  background: #fff7fa;
+}
+
+.birthday-title {
+  color: #d94b7d;
+  font-weight: 700;
+}
+
+.cake-card {
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 5px 18px rgba(217, 75, 125, 0.15);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cake-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 10px 25px rgba(217, 75, 125, 0.25);
+}
+
+.cake-card img {
+  height: 210px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.cake-name {
+  color: #5c2639;
+  font-weight: 600;
+}
+
+.cake-price {
+  color: #d94b7d;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.buy-btn {
+  background: #d94b7d;
+  color: white;
+  border-radius: 25px;
+  padding: 9px 20px;
+  border: none;
+}
+
+.buy-btn:hover {
+  background: #b93867;
+  color: white;
+}
+ </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Birthday Cakes Section -->
+<section id="birthday-cakes" class="birthday-section py-5">
+  <div class="container">
+    <div class="text-center mb-4">
+      <h2 class="birthday-title">Birthday Cakes</h2>
+      <p class="text-muted">Make every birthday sweeter with Cake Delight</p>
+    </div>
+
+    <div class="row g-4">
+      <!-- Cake 1 -->
+      <div class="col-sm-6 col-lg-3">
+        <div class="card cake-card h-100">
+          <img src="cakeimgs/WC1.jpeg" class="card-img-top" alt="Chocolate Birthday Cake">
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="cake-name">Chocolate Birthday Cake</h5>
+            <p class="cake-price">₹799</p>
+            <a href="payment.html?cake=Chocolate%20Birthday%20Cake&price=799" class="btn buy-btn mt-auto">Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cake 2 -->
+      <div class="col-sm-6 col-lg-3">
+        <div class="card cake-card h-100">
+          <img src="cakeimgs/WC2.jpeg" class="card-img-top" alt="Black Forest Cake">
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="cake-name">Black Forest Cake</h5>
+            <p class="cake-price">₹899</p>
+            <a href="payment.html?cake=Black%20Forest%20Cake&price=899" class="btn buy-btn mt-auto">Buy Now</a>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Cake 3 -->
+      <div class="col-sm-6 col-lg-3">
+        <div class="card cake-card h-100">
+          <img src="cakeimgs/WC3.jpeg" class="card-img-top" alt="Strawberry Delight Cake">
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="cake-name">Strawberry Delight Cake</h5>
+            <p class="cake-price">₹949</p>
+            <a href="payment.html?cake=Strawberry%20Delight%20Cake&price=949" class="btn buy-btn mt-auto">Buy Now</a>
+  
+</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cake 4 -->
+      <div class="col-sm-6 col-lg-3">
+        <div class="card cake-card h-100">
+          <img src="cakeimgs/WC4.jpeg" class="card-img-top" alt="Red Velvet Cake">
+          <div class="card-body text-center d-flex flex-column">
+            <h5 class="cake-name">Red Velvet Cake</h5>
+            <p class="cake-price">₹999</p>
+            <a href="payment.html?cake=Red%20Velvet%20Cake&price=999"
+   class="btn buy-btn mt-auto">
+  Buy Now
+</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+
+    <script>
+  function buyCake(cakeName, cakePrice) {
+    const name = encodeURIComponent(cakeName);
+    window.location.href = `payment.html?cake=${name}&price=${cakePrice}`;
+  }
+
+</script>
+</html>

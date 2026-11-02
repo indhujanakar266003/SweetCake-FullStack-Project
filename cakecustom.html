@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cake Customization Form</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <style>
+        * {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #ffffff;
+    font-family: Arial, sans-serif;
+    color: #111;
+}
+
+
+/* MAIN FORM */
+
+.custom-form {
+    max-width: 900px;
+    margin: auto;
+
+    padding: 18px;
+
+    border: 1px solid #eeeeee;
+    border-radius: 12px;
+
+    background: #fff;
+}
+
+
+/* HEADER */
+
+.form-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-bottom: 18px;
+}
+
+.number {
+    width: 42px;
+    height: 42px;
+
+    background: #e7195f;
+    color: white;
+
+    border-radius: 6px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.form-heading h2 {
+    margin: 0;
+
+    color: #d71958;
+
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.form-heading p {
+    margin: 3px 0 0;
+
+    color: #5b164d;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.form-heading p span {
+    color: #e7195f;
+    margin: 0 5px;
+}
+
+
+/* LABEL */
+
+label {
+    display: block;
+
+    margin-bottom: 5px;
+    margin-top: 8px;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* SELECT */
+
+.form-select {
+    height: 38px;
+
+    border: 1px solid #dddddd;
+    border-radius: 6px;
+
+    font-size: 13px;
+
+    margin-bottom: 5px;
+}
+
+.form-select:focus {
+    border-color: #e7195f;
+    box-shadow: 0 0 0 2px rgba(231, 25, 95, 0.1);
+}
+
+
+/* TOPPINGS */
+
+.toppings {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 8px;
+
+    margin-top: 8px;
+}
+
+.toppings div {
+    font-size: 12px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+}
+
+.toppings input {
+    accent-color: #e7195f;
+
+    width: 14px;
+    height: 14px;
+}
+
+
+/* PREVIEW */
+
+.preview-section {
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.cake-preview {
+    height: 285px;
+
+    border: 1px solid #eeeeee;
+
+    border-radius: 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #fff;
+}
+
+.cake-preview img {
+    width: 100%;
+    max-width: 260px;
+
+    height: 250px;
+
+    object-fit: contain;
+}
+
+
+/* MESSAGE */
+
+.message-box {
+    height: 125px;
+
+    border: 1px solid #dddddd;
+
+    border-radius: 8px;
+
+    padding: 10px;
+
+    position: relative;
+}
+
+.message-box textarea {
+    width: 100%;
+    height: 85px;
+
+    border: none;
+    outline: none;
+
+    resize: none;
+
+    font-size: 13px;
+}
+
+.message-box small {
+    position: absolute;
+
+    right: 10px;
+    bottom: 7px;
+
+    color: #777;
+
+    font-size: 11px;
+}
+
+
+/* PRICE */
+
+.price-box {
+    margin-top: 15px;
+
+    padding: 15px;
+
+    border: 1px solid #eeeeee;
+
+    border-radius: 8px;
+
+    text-align: center;
+}
+
+.price-box h6 {
+    margin: 0 0 5px;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.price-box h1 {
+    margin: 0;
+
+    font-size: 30px;
+    font-weight: 800;
+}
+
+
+/* ADD CART */
+
+.add-cart {
+    width: 100%;
+
+    margin-top: 12px;
+
+    padding: 10px;
+
+    border: none;
+    border-radius: 6px;
+
+    background: #e7195f;
+    color: white;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    transition: 0.2s;
+}
+
+.add-cart:hover {
+    background: #c91451;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 767px) {
+
+    .custom-form {
+        padding: 12px;
+    }
+
+    .form-heading h2 {
+        font-size: 19px;
+    }
+
+    .form-heading p {
+        font-size: 11px;
+    }
+
+    .cake-preview {
+        height: 230px;
+    }
+
+    .cake-preview img {
+        height: 210px;
+    }
+
+}
+    </style>
+
+<div class="container py-4">
+
+    <div class="custom-form">
+
+        <!-- HEADER -->
+        <div class="form-heading">
+            
+
+            <div>
+                <h2>CAKE CUSTOMIZATION </h2>
+                <p>
+                    Customize Cake
+                    <span>•</span>
+                    Flavor, Size, Shape, Toppings, Message
+                </p>
+            </div>
+        </div>
+
+
+        <!-- FORM CONTENT -->
+        <div class="row g-3">
+
+            <!-- LEFT : OPTIONS -->
+            <div class="col-md-4">
+
+                <label>1. Choose Flavour</label>
+
+                <select id="flavour" class="form-select">
+    <option value="Chocolate">Chocolate</option>
+    <option value="Vanilla">Vanilla</option>
+    <option value="Red Velvet">Red Velvet</option>
+    <option value="Butterscotch">Butterscotch</option>
+</select>
+
+
+                <label>2. Choose Size</label>
+
+                <select id="size" class="form-select">
+                    <option value="1299">1 Kg</option>
+                    <option value="1799">1.5 Kg</option>
+                    <option value="2299">2 Kg</option>
+                </select>
+
+
+                <label>3. Choose Shape</label>
+
+                <select class="form-select">
+                    <option>Round</option>
+                    <option>Square</option>
+                    <option>Heart</option>
+                </select>
+
+
+                <label>4. Choose Theme</label>
+
+                <select class="form-select">
+                    <option>Birthday</option>
+                    <option>Anniversary</option>
+                    <option>Wedding</option>
+                    <option>Baby Shower</option>
+                </select>
+
+
+                <label>5. Add Toppings</label>
+
+                <div class="toppings">
+
+                    <div>
+                        <input type="checkbox" class="topping" value="50">
+                        <span>Choco Chips</span>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" class="topping" value="50">
+                        <span>Nuts</span>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" class="topping" value="40">
+                        <span>Fruits</span>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" class="topping" value="40">
+                        <span>Sprinkles</span>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" class="topping" value="30">
+                        <span>Cream</span>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" class="topping" value="30">
+                        <span>Syrup</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CENTER : PREVIEW -->
+            <div class="col-md-4 preview-section">
+
+                <label>Live Preview</label>
+
+                <div class="cake-preview">
+
+                    <img
+                        src="choco.png"
+                        id="cakeImage"
+                        alt="Cake Preview"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT : MESSAGE + PRICE -->
+            <div class="col-md-4">
+
+                <label>6. Message on Cake</label>
+
+                <div class="message-box">
+
+                    <textarea
+                        id="message"
+                        maxlength="50"
+                        placeholder="Enter your message..."
+                    ></textarea>
+
+                    <small>
+                        <span id="count">0</span>/50
+                    </small>
+
+                </div>
+
+
+                <div class="price-box">
+
+                    <h6>Total Price</h6>
+
+                    <h1>
+                        ₹<span id="totalPrice">1,299</span>
+                    </h1>
+
+                </div>
+
+
+                <button
+                    class="add-cart"
+                    onclick="addToCart()"
+                >
+                    Add to Cart
+                    <i class="bi bi-cart3"></i>
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="script.js">
+
+
+
+</script>
+
+</body>
+</html>
