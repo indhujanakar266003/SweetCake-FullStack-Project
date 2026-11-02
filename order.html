@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Order Tracking</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="order.css">
+</head>
+
+<body>
+    <!-- style -->
+     <style>
+        * {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: white;
+    font-family: Arial, sans-serif;
+    color: #111;
+}
+
+
+/* ================= FORM ================= */
+
+.order-form {
+    max-width: 950px;
+    margin: auto;
+
+    padding: 18px;
+
+    border: 1px solid #eeeeee;
+    border-radius: 12px;
+
+    background: white;
+}
+
+
+/* ================= HEADER ================= */
+
+.form-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-bottom: 18px;
+}
+
+.form-number {
+    width: 48px;
+    height: 48px;
+
+    background: #e7195f;
+    color: white;
+
+    border-radius: 7px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.form-heading h2 {
+    margin: 0;
+
+    color: #d71958;
+
+    font-size: 27px;
+    font-weight: 700;
+}
+
+.form-heading p {
+    margin: 3px 0 0;
+
+    color: #551548;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.form-heading p span {
+    color: #e7195f;
+    margin: 0 6px;
+}
+
+
+/* ================= SECTIONS ================= */
+
+.orders-section,
+.track-section {
+    border: 1px solid #eeeeee;
+    border-radius: 9px;
+
+    padding: 14px;
+
+    height: 100%;
+}
+
+h5 {
+    color: #c91655;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    margin-bottom: 13px;
+}
+
+
+/* ================= ORDER CARD ================= */
+
+.order-card {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 8px;
+
+    margin-bottom: 8px;
+
+    border: 1px solid #e5e5e5;
+
+    border-radius: 8px;
+
+    min-height: 82px;
+}
+
+.order-card img {
+    width: 62px;
+    height: 62px;
+
+    object-fit: cover;
+
+    border-radius: 7px;
+}
+
+.order-info {
+    flex: 1;
+}
+
+.order-info strong {
+    display: block;
+
+    color: #d71958;
+
+    font-size: 13px;
+}
+
+.order-info p {
+    margin: 3px 0 5px;
+
+    font-size: 10px;
+}
+
+.status {
+    display: inline-block;
+
+    padding: 4px 8px;
+
+    border-radius: 5px;
+
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.delivered {
+    background: #d9f7df;
+    color: #20853b;
+}
+
+.shipped {
+    background: #dcecff;
+    color: #2564a5;
+}
+
+.order-price {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.order-card > i {
+    font-size: 15px;
+}
+
+
+/* ================= VIEW ALL ================= */
+
+.view-orders {
+    width: 100%;
+
+    border: none;
+
+    border-radius: 5px;
+
+    padding: 9px;
+
+    background: #e7195f;
+    color: white;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    margin-top: 3px;
+}
+
+.view-orders:hover,
+.track-btn:hover {
+    background: #c91451;
+}
+
+
+/* ================= TRACK ================= */
+
+.track-section > p {
+    margin: 0 0 15px;
+
+    font-size: 12px;
+}
+
+label {
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.form-control {
+    height: 40px;
+
+    font-size: 12px;
+
+    border: 1px solid #dddddd;
+}
+
+.form-control:focus {
+    border-color: #e7195f;
+
+    box-shadow: 0 0 0 2px rgba(231, 25, 95, 0.1);
+}
+
+
+/* ================= TRACK BUTTON ================= */
+
+.track-btn {
+    width: 100%;
+
+    margin-top: 15px;
+
+    padding: 10px;
+
+    border: none;
+
+    border-radius: 5px;
+
+    background: #e7195f;
+    color: white;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* ================= ORDER STATUS ================= */
+
+.status-section {
+    margin-top: 25px;
+
+    border-top: 1px solid #eeeeee;
+
+    padding-top: 15px;
+}
+
+.status-section h5 {
+    margin-bottom: 20px;
+}
+
+
+/* ================= TRACKING LINE ================= */
+
+.tracking-line {
+    display: flex;
+
+    justify-content: space-between;
+
+    position: relative;
+}
+
+.tracking-line::before {
+    content: "";
+
+    position: absolute;
+
+    top: 14px;
+    left: 8%;
+    right: 8%;
+
+    height: 4px;
+
+    background: #d8d8d8;
+
+    z-index: 0;
+}
+
+.track-step {
+    width: 25%;
+
+    text-align: center;
+
+    position: relative;
+
+    z-index: 1;
+}
+
+.circle {
+    width: 30px;
+    height: 30px;
+
+    margin: auto;
+
+    border-radius: 50%;
+
+    background: #cfcfcf;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.track-step.active .circle {
+    background: #20a957;
+}
+
+.track-step strong {
+    display: block;
+
+    margin-top: 7px;
+
+    font-size: 10px;
+}
+
+.track-step small {
+    display: block;
+
+    margin-top: 5px;
+
+    font-size: 9px;
+
+    line-height: 1.4;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 767px) {
+
+    .order-form {
+        padding: 12px;
+    }
+
+    .form-heading h2 {
+        font-size: 20px;
+    }
+
+    .form-heading p {
+        font-size: 10px;
+    }
+
+    .order-card img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .order-price {
+        font-size: 11px;
+    }
+
+    .tracking-line {
+        overflow-x: auto;
+
+        min-width: 400px;
+    }
+
+}
+     </style>
+
+
+
+
+
+
+    <!-- Html -->
+
+<div class="container py-4">
+
+    <div class="order-form">
+
+        <!-- ================= HEADER ================= -->
+
+        <div class="form-heading">
+
+            
+
+            <div>
+                <h2>ORDER TRACKING FORM</h2>
+
+                <p>
+                    Orders
+                    <span>•</span>
+                    Track Order
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- ================= MAIN ================= -->
+
+        <div class="row g-3">
+
+            <!-- ================= MY ORDERS ================= -->
+
+            <div class="col-md-6">
+
+                <div class="orders-section">
+
+                    <h5>MY ORDERS</h5>
+
+
+                    <!-- ORDER 1 -->
+
+                    <div class="order-card">
+
+                        <img src="choco.png" alt="Chocolate Cake">
+
+                        <div class="order-info">
+
+                            <strong>Order #CD12345</strong>
+
+                            <p>Placed on 12 May 2024</p>
+
+                            <span class="status delivered">
+                                Delivered
+                            </span>
+
+                        </div>
+
+                        <div class="order-price">
+                            ₹1,249
+                        </div>
+
+                        <i class="bi bi-chevron-right"></i>
+
+                    </div>
+
+
+                    <!-- ORDER 2 -->
+
+                    <div class="order-card">
+
+                        <img src="Red velvet (1).png" alt="Red Velvet Cake">
+
+                        <div class="order-info">
+
+                            <strong>Order #CD12344</strong>
+
+                            <p>Placed on 08 May 2024</p>
+
+                            <span class="status shipped">
+                                Shipped
+                            </span>
+
+                        </div>
+
+                        <div class="order-price">
+                            ₹1,399
+                        </div>
+
+                        <i class="bi bi-chevron-right"></i>
+
+                    </div>
+
+
+                    <!-- ORDER 3 -->
+
+                    <div class="order-card">
+
+                        <img src="Butterscoth.png" alt="Butterscotch Cake">
+
+                        <div class="order-info">
+
+                            <strong>Order #CD12343</strong>
+
+                            <p>Placed on 01 May 2024</p>
+
+                            <span class="status delivered">
+                                Delivered
+                            </span>
+
+                        </div>
+
+                        <div class="order-price">
+                            ₹1,199
+                        </div>
+
+                        <i class="bi bi-chevron-right"></i>
+
+                    </div>
+
+
+                    <button
+                        class="view-orders"
+                        onclick="viewAllOrders()"
+                    >
+                        View All Orders
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= TRACK ORDER ================= -->
+
+            <div class="col-md-6">
+
+                <div class="track-section">
+
+                    <h5>TRACK YOUR ORDER</h5>
+
+                    <p>Enter your Order ID to track</p>
+
+
+                    <label>Order ID</label>
+
+                    <input
+                        type="text"
+                        id="orderId"
+                        class="form-control"
+                        placeholder="Enter Order ID"
+                    >
+
+
+                    <button
+                        class="track-btn"
+                        onclick="trackOrder()"
+                    >
+                        Track Order
+                    </button>
+
+
+                    <!-- ================= STATUS ================= -->
+
+                    <div class="status-section">
+
+                        <h5>ORDER STATUS</h5>
+
+                        <div class="tracking-line">
+
+                            <!-- STEP 1 -->
+
+                            <div class="track-step active">
+
+                                <div class="circle">
+                                    ✓
+                                </div>
+
+                                <strong>Placed</strong>
+
+                                <small>
+                                    12 May<br>
+                                    10:30 AM
+                                </small>
+
+                            </div>
+
+
+                            <!-- STEP 2 -->
+
+                            <div class="track-step active">
+
+                                <div class="circle">
+                                    ✓
+                                </div>
+
+                                <strong>Confirmed</strong>
+
+                                <small>
+                                    12 May<br>
+                                    11:00 AM
+                                </small>
+
+                            </div>
+
+
+                            <!-- STEP 3 -->
+
+                            <div class="track-step">
+
+                                <div class="circle"></div>
+
+                                <strong>Out for<br>Delivery</strong>
+
+                                <small>
+                                    13 May<br>
+                                    09:00 AM
+                                </small>
+
+                            </div>
+
+
+                            <!-- STEP 4 -->
+
+                            <div class="track-step">
+
+                                <div class="circle"></div>
+
+                                <strong>Delivered</strong>
+
+                                <small>
+                                    13 May<br>
+                                    02:15 PM
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="order.js"></script>
+
+</body>
+</html>

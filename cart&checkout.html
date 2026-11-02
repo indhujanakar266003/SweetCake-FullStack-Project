@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cart & Checkout</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="cart.css">
+</head>
+
+<body>
+
+<!-- style -->
+ <style>
+    * {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #ffffff;
+    font-family: Arial, sans-serif;
+    color: #111;
+}
+
+
+/* MAIN FORM */
+
+.cart-form {
+    max-width: 950px;
+    margin: auto;
+
+    padding: 18px;
+
+    border: 1px solid #eeeeee;
+    border-radius: 12px;
+
+    background: white;
+}
+
+
+/* HEADER */
+
+.form-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-bottom: 18px;
+}
+
+.form-number {
+    width: 42px;
+    height: 42px;
+
+    background: #e7195f;
+    color: white;
+
+    border-radius: 6px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.form-heading h2 {
+    margin: 0;
+
+    color: #d71958;
+
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.form-heading p {
+    margin: 3px 0 0;
+
+    color: #5b164d;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.form-heading p span {
+    color: #e7195f;
+    margin: 0 5px;
+}
+
+
+/* COMMON SECTION */
+
+.cart-section,
+.address-section,
+.payment-section {
+    border: 1px solid #eeeeee;
+    border-radius: 8px;
+
+    padding: 14px;
+    min-width: 0;
+    height: 100%;
+}
+
+h5 {
+    margin-bottom: 20px;
+
+    color: #4c1645;
+
+    font-size: 16px;
+    font-weight: 700;
+}
+
+
+/* CART HEADER */
+
+.cart-head {
+    display: grid;
+    grid-template-columns: 1fr 55px 55px;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    margin-bottom: 8px;
+}
+
+
+/* CART ITEM */
+
+.cart-item {
+    display: grid;
+
+    grid-template-columns: 42px 1fr auto auto;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 7px 0;
+}
+
+.cart-item img {
+    width: 42px;
+    height: 42px;
+
+    object-fit: cover;
+
+    border-radius: 5px;
+}
+
+.item-name strong {
+    display: block;
+
+    font-size: 11px;
+}
+
+.item-name small {
+    color: #555;
+
+    font-size: 10px;
+}
+
+
+/* QUANTITY */
+
+.quantity {
+    display: flex;
+
+    align-items: center;
+
+    border: 1px solid #ddd;
+
+    border-radius: 5px;
+
+    overflow: hidden;
+}
+
+.quantity button {
+    width: 20px;
+    height: 24px;
+
+    border: none;
+
+    background: white;
+
+    font-size: 14px;
+}
+
+.quantity span {
+    width: 20px;
+
+    text-align: center;
+
+    font-size: 11px;
+}
+
+
+/* ITEM PRICE */
+
+.cart-item > strong {
+    font-size: 12px;
+}
+
+
+/* LABEL */
+
+label {
+    display: block;
+
+    margin-top: 10px;
+    margin-bottom: 5px;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+/* TEXTAREA */
+
+textarea {
+    height: 55px !important;
+
+    resize: none;
+
+    font-size: 11px !important;
+}
+
+
+/* PRICE */
+
+.price-details {
+    margin-top: 15px;
+
+    font-size: 11px;
+}
+
+.price-details > div {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin: 7px 0;
+}
+
+.discount {
+    color: #d71958;
+}
+
+.price-details hr {
+    margin: 8px 0;
+}
+
+.price-details .total {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+/* INPUTS */
+
+.form-control {
+    height: 34px;
+
+    border: 1px solid #dddddd;
+
+    border-radius: 5px;
+
+    font-size: 11px;
+}
+
+.form-control:focus {
+    border-color: #e7195f;
+
+    box-shadow: 0 0 0 2px rgba(231, 25, 95, 0.1);
+}
+
+
+/* COUPON */
+
+.coupon-box {
+    display: flex;
+
+    gap: 5px;
+}
+
+.coupon-box button {
+    width: 65px;
+
+    border: none;
+
+    border-radius: 5px;
+
+    background: #e7195f;
+    color: white;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+#couponMessage {
+    font-size: 10px;
+    color: #d71958;
+}
+
+
+/* PAYMENT */
+
+.payment-section {
+    border: 1px solid #eeeeee;
+    border-radius: 8px;
+    padding: 14px;
+    height: 100%;
+    min-width: 0;
+}
+
+.payment-option {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin: 14px 0;
+
+    font-size: 13px;
+
+    white-space: nowrap;
+}
+
+.payment-option input {
+    accent-color: #d71958;
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+}
+
+.payment-option span {
+    white-space: nowrap;
+}
+
+
+/* PLACE ORDER */
+
+.place-order {
+    width: 100%;
+
+    margin-top: 50px;
+
+    padding: 10px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background: #e7195f;
+    color: white;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.place-order:hover {
+    background: #c91451;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 767px) {
+
+    .cart-form {
+        padding: 12px;
+    }
+
+    .form-heading h2 {
+        font-size: 19px;
+    }
+
+    .form-heading p {
+        font-size: 10px;
+    }
+
+    .place-order {
+        margin-top: 20px;
+    }
+}
+ </style>
+
+
+
+
+
+
+    <!-- html -->
+
+<div class="container py-4">
+
+    <div class="cart-form">
+
+        <!-- HEADER -->
+        <div class="form-heading">
+
+            
+
+            <div>
+                <h2>CART & CHECKOUT FORM</h2>
+
+                <p>
+                    Cart
+                    <span>•</span>
+                    Address
+                    <span>•</span>
+                    Coupon
+                    <span>•</span>
+                    Payment
+                    <span>•</span>
+                    Place Order
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- MAIN CONTENT -->
+        <div class="row g-3">
+
+            <!-- ================= CART ================= -->
+            <div class="col-md-4">
+
+                <div class="cart-section">
+
+                    <h5>My Cart</h5>
+
+                    <div class="cart-head">
+                        <span>Item</span>
+                        <span>Qty</span>
+                        <span>Price</span>
+                    </div>
+
+
+                    <!-- CART ITEM -->
+                    <div class="cart-item">
+
+                        <img
+                            id="cartImage"
+                            src="choco.png"
+                            alt="Cake"
+                        >
+
+                        <div class="item-name">
+                            <strong id="cartCakeName">
+                                Chocolate Truffle Cake
+                            </strong>
+
+                            <small id="cartSize">
+                                1 Kg
+                            </small>
+                        </div>
+
+                       <div class="quantity">
+
+    <button type="button" onclick="decreaseQty()">
+        −
+    </button>
+
+    <span id="quantity">1</span>
+
+    <button type="button" onclick="increaseQty()">
+        +
+    </button>
+
+</div>
+
+                        <strong>
+                            ₹<span id="itemPrice">1299</span>
+                        </strong>
+
+                    </div>
+
+
+                    <!-- INSTRUCTIONS -->
+
+                    <label>Add Instructions (Optional)</label>
+
+                    <textarea
+                        id="instructions"
+                        class="form-control"
+                        placeholder="Write your instructions..."
+                    ></textarea>
+
+
+                    <!-- PRICE DETAILS -->
+
+                    <div class="price-details">
+
+                        <div>
+                            <span>Subtotal</span>
+                            <strong>₹<span id="subtotal">1299</span></strong>
+                        </div>
+
+                        <div>
+                            <span>Coupon Discount</span>
+                            <strong class="discount">
+                                -₹<span id="discount">0</span>
+                            </strong>
+                        </div>
+
+                        <div>
+                            <span>Delivery Charge</span>
+                            <strong>₹50</strong>
+                        </div>
+
+                        <hr>
+
+                        <div class="total">
+                            <span>Total Amount</span>
+                            <strong>
+                                ₹<span id="totalAmount">1349</span>
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= ADDRESS ================= -->
+            <div class="col-md-4">
+
+                <div class="address-section">
+
+                    <h5>Delivery Address</h5>
+
+
+                    <label>Full Name</label>
+
+                    <input
+                        type="text"
+                        id="fullName"
+                        class="form-control"
+                        placeholder="Enter your name"
+                    >
+
+
+                    <label>Address Line 1</label>
+
+                    <input
+                        type="text"
+                        id="address1"
+                        class="form-control"
+                        placeholder="Enter address line 1"
+                    >
+
+
+                    <label>Address Line 2 (Optional)</label>
+
+                    <input
+                        type="text"
+                        id="address2"
+                        class="form-control"
+                        placeholder="Enter address line 2"
+                    >
+
+
+                    <div class="row">
+
+                        <div class="col-6">
+
+                            <label>City</label>
+
+                            <input
+                                type="text"
+                                id="city"
+                                class="form-control"
+                                placeholder="Enter city"
+                            >
+
+                        </div>
+
+                        <div class="col-6">
+
+                            <label>Pincode</label>
+
+                            <input
+                                type="text"
+                                id="pincode"
+                                class="form-control"
+                                placeholder="Enter pincode"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <label>Phone Number</label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        class="form-control"
+                        placeholder="Enter phone number"
+                    >
+
+
+                    <!-- COUPON -->
+
+                    <label>Coupon Code</label>
+
+                    <div class="coupon-box">
+
+    <input
+        type="text"
+        id="coupon"
+        class="form-control"
+        placeholder="Enter coupon"
+    >
+
+    <button
+        type="button"
+        onclick="applyCoupon()"
+    >
+        Apply
+    </button>
+
+</div>
+<small id="couponMessage"></small>
+
+</div>   <!-- address-section close -->
+
+</div>
+
+
+            <!-- ================= PAYMENT ================= -->
+            <div class="col-md-4">
+
+                <div class="payment-section">
+
+                    <h5>Payment Method</h5>
+
+
+                    <div class="payment-option">
+
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="Cash on Delivery"
+                            checked
+                        >
+
+                        <span>Cash on Delivery</span>
+
+                    </div>
+
+
+                    <div class="payment-option">
+
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="UPI"
+                        >
+
+                        <span>UPI</span>
+
+                    </div>
+
+
+                    <div class="payment-option">
+
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="Credit / Debit Card"
+                        >
+
+                        <span>Credit / Debit Card</span>
+
+                    </div>
+
+
+                    <div class="payment-option">
+
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="Net Banking"
+                        >
+
+                        <span>Net Banking</span>
+
+                    </div>
+
+
+                    <!-- PLACE ORDER -->
+
+                    <button
+    type="button"
+    class="place-order"
+    onclick="placeOrder()"
+>
+    Place Order
+    <i class="bi bi-lock-fill"></i>
+</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="cart.js">
+    
+</script>
+
+</body>
+</html>
